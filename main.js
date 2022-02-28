@@ -5,7 +5,7 @@ const allPlayers = () => {
     document.getElementById('show-player').innerHTML='';
     const playerField =document.getElementById('player-field').value;
    
-    console.log(playerField)
+    // console.log(playerField)
     const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${playerField}`
     fetch(url)
     .then(res => res.json())
@@ -18,8 +18,9 @@ const displayPlayers = (players) => {
     const showPlayer = document.getElementById('show-player');
     for(const player of players){
                     const div = document.createElement('div');
-                    // div.classList.add('card');
-                    div.innerHTML =`<div class="card" style="width: 18rem;">
+                    div.style.display=('flex')
+                    div.classList.add('card');
+                    div.innerHTML =`<div  style="width: 18rem;">
                     <img src="${player.strThumb}" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h4 class="card-title">Name :${player.strPlayer}</h4>
@@ -47,10 +48,8 @@ const detailsPlayers =  info =>{
 }
 
 const displayDetails = Details =>{
-   const details = document.getElementById('details');
-   const div = document.createElement('div'); 
-                div.innerHTML =`
-                <div class="col-md-6">
+   const details = document.getElementById('details').innerHTML =`
+                <div>
                 <div class="card" style="width: 18rem;">
                 <img src="${Details.strThumb}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -63,7 +62,7 @@ const displayDetails = Details =>{
                 </div>
                 </div>`;
 
-    details.appendChild(div);
+   
 
 
 
